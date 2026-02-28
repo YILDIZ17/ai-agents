@@ -1,7 +1,9 @@
 # Docs
 
-This folder contains higher-level documentation for my AI agents.
+Higher-level documentation for AI agents experiments.
 
-- Design notes and architecture sketches.
-- Comparisons between frameworks (OpenAI Agents SDK, CrewAI, LangGraph, AutoGen, MCP).
-- Ideas for future projects and improvements.
+## Contents
+
+- Design notes and architecture sketches
+- Framework comparisons (OpenAI Agents SDK, CrewAI, LangGraph, AutoGen, MCP)
+- Ideas for future projects and improvements

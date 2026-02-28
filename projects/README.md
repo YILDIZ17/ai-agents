@@ -1,7 +1,11 @@
 # Projects
 
-This folder contains real agent projects.
+Real agent projects (end-to-end demos, tools, or apps).
 
-Each project lives in its own subfolder and has its own `README.md`.
+## Structure
 
-## Various projects
+Each project lives in its own subfolder and has its own `README.md` describing:
+
+- Purpose and features
+- How to run it
+- Dependencies and env vars
