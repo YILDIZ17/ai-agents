@@ -10,14 +10,24 @@ Personal repository for AI agents experiments — labs, notes, and real projects
 | `projects/` | Real agent projects (each in its own subfolder with its own README)         |
 | `docs/`     | Higher-level documentation, design notes, and framework comparisons         |
 
-## Setup
+## Quick start
 
-- **Python**: 3.12+
-- **Package manager**: [uv](https://docs.astral.sh/uv/) (or `pip` via `requirements.txt`)
+All commands are run **from the repo root** (`ai-agents/`), in a terminal (PowerShell on Windows).
 
-### First-time setup
+| I want to...                         | Command                                              |
+|--------------------------------------|------------------------------------------------------|
+| Install / update the environment     | `uv sync`                                            |
+| Open the notebooks in the browser    | `uv run jupyter lab`                                 |
+| Run a Python script                  | `uv run python path/to/script.py`                    |
+| Launch the Digital Twin app          | `uv run python courses/01_foundations/twin/app.py`   |
+| Add a dependency                     | `uv add <package>`                                   |
+| Stop a running server (Jupyter, app) | **Ctrl + C** in the terminal                         |
 
-Run all commands from the repo root.
+No need to activate the virtual environment: `uv run` uses `.venv/` automatically.
+
+## First-time setup
+
+Requirements: **Python 3.12** (pinned in `.python-version`, uv downloads it if missing) and [uv](https://docs.astral.sh/uv/).
 
 **1. Install uv** (once per machine)
 
@@ -33,13 +43,13 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 Restart the terminal, then check with `uv --version`.
 
-**2. Install dependencies** (creates `.venv/` from `pyproject.toml` + `uv.lock`)
+**2. Install dependencies** — creates `.venv/` from `pyproject.toml` + `uv.lock` (includes JupyterLab):
 
 ```bash
 uv sync
 ```
 
-Or with pip: `pip install -r requirements.txt`.
+Without uv: `pip install -r requirements.txt` (plus `pip install jupyterlab ipykernel` for notebooks).
 
 **3. Create a `.env` file** at the repo root (it is git-ignored):
 
@@ -57,25 +67,29 @@ PUSHOVER_TOKEN=...
 uv run playwright install
 ```
 
-### Running the notebooks
+## Running the notebooks
 
-**Option A — in Cursor / VS Code**
+Two ways, pick one.
+
+**Option A — directly in Cursor / VS Code** (nothing to launch)
 
 1. Open a `.ipynb` file (e.g. `courses/01_foundations/01_lab01.ipynb`).
 2. Click **Select Kernel** (top right) → **Python Environments** → `.venv` (Python 3.12).
 3. Run cells with **Shift + Enter**.
 
-**Option B — Jupyter Lab in the browser**
+If `.venv` does not show up, run `uv sync` first, then reload the window.
+
+**Option B — JupyterLab in the browser**
 
 ```bash
-uv run --with jupyter jupyter lab
+uv run jupyter lab
 ```
 
-Stop the server with **Ctrl + C**.
+The browser opens automatically (otherwise, open the `http://localhost:8888/lab?token=...` link printed in the terminal). Keep the terminal open while you work; stop the server with **Ctrl + C**.
 
 > After a kernel restart, always re-run the cells from the top (imports, `load_dotenv()`, ...) before the others.
 
-### Running a Python script / app
+## Running a Python script / app
 
 ```bash
 uv run python path/to/script.py
@@ -84,16 +98,16 @@ uv run python path/to/script.py
 Example — the Digital Twin Gradio app:
 
 ```bash
-cd courses/01_foundations/twin
-uv run app.py
+uv run python courses/01_foundations/twin/app.py
 ```
 
-Then open the URL shown in the terminal (usually http://127.0.0.1:7860).
+Then open http://127.0.0.1:7860 (URL also shown in the terminal). Stop with **Ctrl + C**.
 
-### Day-to-day
+## Day-to-day
 
 - After a `git pull` or a change in `pyproject.toml`: `uv sync`
-- Add a dependency: `uv add <package>`
+- Add a dependency: `uv add <package>` (dev-only tool: `uv add --dev <package>`)
+- Upgrade all dependencies: `uv lock --upgrade` then `uv sync`
 
 ## Stack
 
