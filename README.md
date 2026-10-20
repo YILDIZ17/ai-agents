@@ -14,14 +14,15 @@ Personal repository for AI agents experiments — labs, notes, and real projects
 
 All commands are run **from the repo root** (`ai-agents/`), in a terminal (PowerShell on Windows).
 
-| I want to...                         | Command                                              |
-|--------------------------------------|------------------------------------------------------|
-| Install / update the environment     | `uv sync`                                            |
-| Open the notebooks in the browser    | `uv run jupyter lab`                                 |
-| Run a Python script                  | `uv run python path/to/script.py`                    |
-| Launch the Digital Twin app          | `uv run python courses/01_foundations/twin/app.py`   |
-| Add a dependency                     | `uv add <package>`                                   |
-| Stop a running server (Jupyter, app) | **Ctrl + C** in the terminal                         |
+| I want to...                         | Command                                                  |
+|--------------------------------------|----------------------------------------------------------|
+| Install / update the environment     | `uv sync`                                                |
+| Open the notebooks in the browser    | `uv run jupyter lab`                                     |
+| Run a Python script                  | `uv run python path/to/script.py`                        |
+| Launch the Digital Twin app          | `uv run python courses/01_foundations/twin/app.py`       |
+| Launch the Deep Research UI         | `uv run python courses/02_openai/deep_research/app.py`   |
+| Add a dependency                     | `uv add <package>`                                       |
+| Stop a running server (Jupyter, app) | **Ctrl + C** in the terminal                             |
 
 No need to activate the virtual environment: `uv run` uses `.venv/` automatically.
 
@@ -57,8 +58,13 @@ Without uv: `pip install -r requirements.txt` (plus `pip install jupyterlab ipyk
 OPENAI_API_KEY=sk-...
 # Optional
 ANTHROPIC_API_KEY=...
-PUSHOVER_USER=...    # push notifications (lab 04 / twin)
+PUSHOVER_USER=...    # push notifications (lab 04 / twin / deep research)
 PUSHOVER_TOKEN=...
+# Deep Research email delivery — see courses/02_openai/deep_research/README.md
+# USE_EMAIL=true
+# EMAIL_ADDRESS=...
+# EMAIL_SMTP_SERVER=smtp.gmail.com
+# EMAIL_APP_PASSWORD=...
 ```
 
 **4. (Optional) Install Playwright browsers**, only needed for browser-based labs:
@@ -102,6 +108,14 @@ uv run python courses/01_foundations/twin/app.py
 ```
 
 Then open http://127.0.0.1:7860 (URL also shown in the terminal). Stop with **Ctrl + C**.
+
+Deep Research (same URL, run only one Gradio app at a time):
+
+```bash
+uv run python courses/02_openai/deep_research/app.py
+```
+
+See [courses/02_openai/deep_research/README.md](courses/02_openai/deep_research/README.md) for the pipeline and the email / Pushover settings.
 
 ## Day-to-day
 
